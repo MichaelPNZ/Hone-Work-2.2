@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewColorOutlet.layer.cornerRadius = 15
+        
         redSliderOutlet.minimumValue = 0
         redSliderOutlet.maximumValue = 1
         redSliderOutlet.value = 0
@@ -43,13 +46,24 @@ class ViewController: UIViewController {
         blueValueOutlet.text = String(blueSliderOutlet.value)
         
     }
+    func changeColor() {
+        viewColorOutlet.backgroundColor = UIColor(displayP3Red: CGFloat(redSliderOutlet.value), green: CGFloat(greenSliderOutlet.value), blue: CGFloat(blueSliderOutlet.value), alpha: 1)
+    }
+    
     @IBAction func redValueAction(_ sender: Any) {
+        redValueOutlet.text = String(format: "%.2f", redSliderOutlet.value)
+        changeColor()
     }
     
     @IBAction func greenValueAction(_ sender: Any) {
+        greenValueOutlet.text = String(format: "%.2f", greenSliderOutlet.value)
+        changeColor()
     }
     @IBAction func blueValueAction(_ sender: Any) {
+        blueValueOutlet.text = String(format: "%.2f", blueSliderOutlet.value)
+        changeColor()
     }
+    
     
 }
 
